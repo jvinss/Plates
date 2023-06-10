@@ -1,5 +1,39 @@
 package org.example;
 
-public class Second extends Dish implements Cookable {
+import java.util.ArrayList;
 
+public class Second extends Course implements Cookable {
+
+
+    public Second(String name, String description, ArrayList<String> ingredients, String recipe) {
+        super(name, description, ingredients, recipe);
+    }
+
+    @Override
+    public String prepare() {
+        return "Preparing" + getName();
+    }
+
+    @Override
+    public String present() {
+        return "Presenting " + getName() + " " + getDescription() + " ";
+    }
+
+    @Override
+    public String getFullRecipe() {
+        String fullRecipe = "";
+        fullRecipe += getName() + '\n' + getDescription() + '\n';
+        fullRecipe += "Ingredienti: " + '\n';
+        for (String i : getIngredients()) {
+            fullRecipe += i + " ";
+        }
+        fullRecipe += '\n' + getRecipe();
+        return fullRecipe;
+    }
+
+
+    @Override
+    public boolean needsHeating() {
+        return true;
+    }
 }
